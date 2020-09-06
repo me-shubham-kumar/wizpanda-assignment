@@ -14,7 +14,7 @@ import com.wizpanda.bean.Student;
 import com.wizpanda.service.StudentService;
 
 @RestController
-@CrossOrigin
+@CrossOrigin(origins = "http://localhost:4200")
 public class StudentController {
 	
 	@Autowired
@@ -35,6 +35,7 @@ public class StudentController {
 			produces = MediaType.APPLICATION_JSON_VALUE,
 			method = RequestMethod.POST)
 	public Student loginStudent(@RequestBody Student student){
+		System.out.println(student);
 		return studentService.login(student);
 		
 	}

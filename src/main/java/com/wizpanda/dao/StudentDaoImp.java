@@ -18,6 +18,7 @@ public class StudentDaoImp implements StudentDao{
 
 	@Override
 	public Student loginStudent(String email) {
+		System.out.println("Email "+email);
 		Session session = sf.openSession();
 		Student student = (Student)session.get(Student.class, email);
 		return student;
@@ -26,9 +27,7 @@ public class StudentDaoImp implements StudentDao{
 	@Override
 	public List<Student> getAllStudents() {
 		Session session = sf.openSession();
-		Query query = session.createSQLQuery("select * from student");
-		List<Student> students = query.list();
-		return students;
+		return session.createQuery("from Student").list();
 	}
 
 	@Override
